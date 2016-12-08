@@ -34,15 +34,15 @@ class PseudoLens<A, B> {
     constructor(private item: A, private lens: Lens<A, B>) {
     }
 
-    get = (): B => {
+    get(): B {
         return this.lens.get(this.item);
     }
 
-    set = (part: B) => {
+    set(part: B): A {
         return this.lens.set(this.item, part);
     }
 
-    at = <K extends keyof B>(prop: K): PseudoLens<A, B[K]> => {
+    at<K extends keyof B>(prop: K): PseudoLens<A, B[K]> {
         let lens: Lens<A, B[K]> = compose(view<B, K>(prop), this.lens)
         return new PseudoLens(this.item, lens);
     }
