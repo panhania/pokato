@@ -2,7 +2,17 @@
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
-    "outDir": "build/"
+    "outDir": "build/",
+
+    "noEmitOnError": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "include": [
     "src/**/*"
