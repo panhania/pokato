@@ -42,6 +42,10 @@ class PseudoLens<A, B> {
         return this.lens.set(this.item, part);
     }
 
+    modify(f: (part: B) => B): A {
+        return this.lens.set(this.item, f(this.lens.get(this.item)));
+    }
+
     at<K extends keyof B>(prop: K): PseudoLens<A, B[K]> {
         let lens: Lens<A, B[K]> = compose(view<B, K>(prop), this.lens)
         return new PseudoLens(this.item, lens);
