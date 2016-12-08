@@ -10,6 +10,13 @@ function pure<A>(): Lens<A, A> {
     };
 }
 
+function view<A, K extends keyof A>(prop: K): Lens<A, A[K]> {
+    return {
+        get: (item: A) => item[prop],
+        set: (item: A, part: A[K]) => Object.assign({}, item, { prop: part })
+    };
+}
+
 function compose<A, B, C>(bc: Lens<B, C>, ab: Lens<A, B>): Lens<A, C> {
     return {
         get: (element: A) => bc.get(ab.get(element)),
