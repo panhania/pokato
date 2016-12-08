@@ -3,5 +3,8 @@
   "version": "0.0.0",
   "description": "A pseudo-lens library for TypeScript",
   "author": "Łukasz Hanuszczak <lukasz.hanuszczak@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^2.1.4"
+  }
 }
