@@ -23,3 +23,23 @@ function compose<A, B, C>(bc: Lens<B, C>, ab: Lens<A, B>): Lens<A, C> {
         set: (item: A, part: C) => ab.set(item, bc.set(ab.get(item), part))
     };
 }
+
+
+class PseudoLens<A, B> {
+
+    constructor(private item: A, private lens: Lens<A, B>) {
+    }
+
+    get = (): B => {
+        return this.lens.get(this.item);
+    }
+
+    set = (part: B) => {
+        return this.lens.set(this.item, part);
+    }
+
+    at = <K extends keyof B>(prop: K): PseudoLens<A, B[K]> => {
+        let lens: Lens<A, B[K]> = compose(view<B, K>(prop), this.lens)
+        return new PseudoLens(this.item, lens);
+    }
+}
