@@ -13,7 +13,11 @@ function pure<A>(): Lens<A, A> {
 function view<A, K extends keyof A>(prop: K): Lens<A, A[K]> {
     return {
         get: (item: A) => item[prop],
-        set: (item: A, part: A[K]) => Object.assign({}, item, { prop: part })
+        set: (item: A, part: A[K]) => {
+            let cloned = Object.assign({}, item);
+            cloned[prop] = part;
+            return cloned;
+        }
     };
 }
 
