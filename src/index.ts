@@ -43,3 +43,7 @@ class PseudoLens<A, B> {
         return new PseudoLens(this.item, lens);
     }
 }
+
+function lens<A>(item: A): PseudoLens<A, A> {
+    return new PseudoLens(item, pure<A>());
+}
