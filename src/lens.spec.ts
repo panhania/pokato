@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { pure, view } from "./lens";
+import { pure, view, compose } from "./lens";
 
 
 describe("pure", () => {
@@ -51,5 +51,27 @@ describe("view", () => {
             bar: 1337,
             baz: "yolo"
         });
+    });
+});
+
+describe("compose", () => {
+
+    it("should yield a pure lens when given two pure lenses", () => {
+        let lens = <T>() => compose(pure<T>(), pure<T>());
+        expect(lens().get(42)).equals(42);
+        expect(lens().get("foo")).equals("foo");
+        expect(lens().set(42, 0)).equals(0);
+        expect(lens().set(0, 42)).equals(42);
+        expect(lens().set("foo", "bar")).equals("bar");
+    });
+
+    it("should allow accessing nested properties", () => {
+        let viewBar = view<{ bar: { baz: number } }, "bar">("bar");
+        let viewBaz = view<{ baz: number }, "baz">("baz");
+        let foo = { bar: { baz: 42 } };
+        expect(compose(viewBaz, viewBar).get(foo)).equal(42);
+        expect(compose(viewBaz, viewBar).set(foo, 1337)).to.deep.equal(
+            { bar: { baz: 1337 } }
+        );
     });
 });
