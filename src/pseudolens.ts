@@ -18,7 +18,7 @@ export class PseudoLens<A, B> {
         return this.lens.set(this.item, f(this.lens.get(this.item)));
     }
 
-    compose<C>(lens: Lens<B, C>): PseudoLens<A, C> {
+    focus<C>(lens: Lens<B, C>): PseudoLens<A, C> {
         return new PseudoLens(this.item, compose(lens, this.lens));
     }
 
