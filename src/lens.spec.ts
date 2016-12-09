@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { pure } from "./lens";
+import { pure, view } from "./lens";
 
 
 describe("pure", () => {
@@ -16,5 +16,40 @@ describe("pure", () => {
         expect(pure().set(42, -1)).equals(-1);
         expect(pure().set("foo", "bar")).equals("bar");
         expect(pure().set({ foo: 0 }, { bar: 0 })).to.have.property("bar");
+    });
+});
+
+describe("view", () => {
+
+    let foo1 = { bar: 42, baz: "quux" };
+    let foo2 = { bar: 1337, baz: "norf" };
+
+    let viewBar = view<{ bar: number, baz: string }, "bar">("bar");
+    let viewBaz = view<{ bar: number, baz: string }, "baz">("baz");
+
+    it("should have a getter accessing given property", () => {
+        expect(viewBar.get(foo1)).equals(42);
+        expect(viewBar.get(foo2)).equals(1337);
+        expect(viewBaz.get(foo1)).equals("quux");
+        expect(viewBaz.get(foo2)).equals("norf");
+    });
+
+    it("should have a setter updating only a specific property", () => {
+        expect(viewBar.set(foo1, 41)).to.deep.equal({
+            bar: 41,
+            baz: "quux"
+        });
+        expect(viewBar.set(foo2, -1)).to.deep.equal({
+            bar: -1,
+            baz: "norf"
+        });
+        expect(viewBaz.set(foo1, "xoxo")).to.deep.equal({
+            bar: 42,
+            baz: "xoxo"
+        });
+        expect(viewBaz.set(foo2, "yolo")).to.deep.equal({
+            bar: 1337,
+            baz: "yolo"
+        });
     });
 });
