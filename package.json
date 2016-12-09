@@ -5,8 +5,8 @@
   "author": "Łukasz Hanuszczak <lukasz.hanuszczak@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "$($(which yarn || which npm) bin)/tsc",
-    "watch": "$($(which yarn || which npm) bin)/tsc --watch"
+    "build": "tsc",
+    "watch": "tsc --watch"
   },
   "devDependencies": {
     "typescript": "^2.1.4"
