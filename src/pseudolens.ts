@@ -18,6 +18,10 @@ export class PseudoLens<A, B> {
         return this.lens.set(this.item, f(this.lens.get(this.item)));
     }
 
+    compose<C>(lens: Lens<B, C>): PseudoLens<A, C> {
+        return new PseudoLens(this.item, compose(lens, this.lens));
+    }
+
     at<K extends keyof B>(prop: K): PseudoLens<A, B[K]> {
         let lens: Lens<A, B[K]> = compose(view<B, K>(prop), this.lens)
         return new PseudoLens(this.item, lens);
