@@ -1,10 +1,11 @@
 {
   "name": "pokato",
-  "version": "0.0.0",
-  "description": "A pseudo-lens library for TypeScript",
+  "version": "0.0.1",
+  "description": "A poor man's lens library for TypeScript",
   "author": "Łukasz Hanuszczak <lukasz.hanuszczak@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "install": "tsc",
     "build": "tsc",
     "watch": "tsc --watch",
     "test": "mocha build/**/*.spec.js"
@@ -15,5 +16,6 @@
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
     "typescript": "^2.1.4"
-  }
+  },
+  "main": "build/index.js"
 }
