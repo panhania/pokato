@@ -73,7 +73,7 @@ describe("PseudoLens", () => {
             bar: 8,
             baz: 8,
             quux: {
-                plugh: 11,
+                plugh: 15,
                 thud: 16
             },
             norf: [23, 42]
@@ -85,12 +85,12 @@ describe("PseudoLens", () => {
             baz: 8,
             quux: {
                 plugh: 15,
-                thud: 20
+                thud: 17
             },
             norf: [23, 42]
         });
 
-        let append = (x: Array<number>) => x.concat([100]);
+        let append = (x: Array<number>) => x.concat([108]);
         expect(lens(foo).at("norf").modify(append)).to.deep.equal({
             bar: 4,
             baz: 8,
