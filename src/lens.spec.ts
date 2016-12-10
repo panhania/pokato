@@ -1,7 +1,6 @@
 import { expect } from "chai";
 
-import { pure, view, compose } from "./lens";
-
+import { compose, pure, view } from "./lens";
 
 describe("pure", () => {
 
@@ -37,19 +36,19 @@ describe("view", () => {
     it("should have a setter updating only a specific property", () => {
         expect(viewBar.set(foo1, 41)).to.deep.equal({
             bar: 41,
-            baz: "quux"
+            baz: "quux",
         });
         expect(viewBar.set(foo2, -1)).to.deep.equal({
             bar: -1,
-            baz: "norf"
+            baz: "norf",
         });
         expect(viewBaz.set(foo1, "xoxo")).to.deep.equal({
             bar: 42,
-            baz: "xoxo"
+            baz: "xoxo",
         });
         expect(viewBaz.set(foo2, "yolo")).to.deep.equal({
             bar: 1337,
-            baz: "yolo"
+            baz: "yolo",
         });
     });
 });
@@ -70,8 +69,10 @@ describe("compose", () => {
         let viewBaz = view<{ baz: number }, "baz">("baz");
         let foo = { bar: { baz: 42 } };
         expect(compose(viewBaz, viewBar).get(foo)).equal(42);
-        expect(compose(viewBaz, viewBar).set(foo, 1337)).to.deep.equal(
-            { bar: { baz: 1337 } }
-        );
+        expect(compose(viewBaz, viewBar).set(foo, 1337)).to.deep.equal({
+            bar: {
+                baz: 1337,
+            },
+        });
     });
 });

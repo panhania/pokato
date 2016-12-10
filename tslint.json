@@ -1,5 +1,9 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "object-literal-sort-keys": false,
+    "variable-name": [true, "check-format", "allow-leading-underscore"],
+    "linebreak-style": [true, "LF"],
+    "max-line-length": 80
   }
 }
