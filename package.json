@@ -5,7 +5,7 @@
   "author": "Łukasz Hanuszczak <lukasz.hanuszczak@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "install": "tsc",
+    "prepublish": "tsc",
     "build": "tsc",
     "watch": "tsc --watch",
     "test": "mocha build/**/*.spec.js",
