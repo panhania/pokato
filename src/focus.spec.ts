@@ -3,7 +3,6 @@ import { expect } from "chai";
 import { view } from "./lens";
 import { focus } from "./focus";
 
-
 describe("Focus", () => {
 
     let foo = {

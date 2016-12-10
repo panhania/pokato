@@ -1,6 +1,5 @@
 import { Lens, pure, view, compose } from "./lens";
 
-
 export class Focus<A, B> {
 
     constructor(private item: A, private lens: Lens<A, B>) {

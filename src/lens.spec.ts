@@ -2,7 +2,6 @@ import { expect } from "chai";
 
 import { pure, view, compose } from "./lens";
 
-
 describe("pure", () => {
 
     it("should have a getter like the I combinator", () => {
