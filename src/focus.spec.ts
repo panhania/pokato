@@ -90,7 +90,7 @@ describe("Focus", () => {
             norf: [23, 42],
         });
 
-        let append = (x: Array<number>) => x.concat([108]);
+        let append = (x: number[]) => x.concat([108]);
         expect(focus(foo).at("norf").modify(append)).to.deep.equal({
             bar: 4,
             baz: 8,
