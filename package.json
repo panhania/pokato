@@ -8,7 +8,8 @@
     "install": "tsc",
     "build": "tsc",
     "watch": "tsc --watch",
-    "test": "mocha build/**/*.spec.js"
+    "test": "mocha build/**/*.spec.js",
+    "lint": "tslint --project tsconfig.json"
   },
   "devDependencies": {
     "@types/chai": "^3.4.34",
