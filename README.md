@@ -33,35 +33,35 @@ Let us assume you have a JSON like this:
 
     let json = { foo: { bar: { baz: 42 }, quux: "norf" } }
 
-Just import the `lens` function from this library:
+Just import the `focus` function from this library:
 
-    import { lens } from "pokato";
+    import { focus } from "pokato";
 
 and then use it like this:
 
-    lens(json).at("foo").at("bar").at("baz").get()
+    focus(json).at("foo").at("bar").at("baz").get()
     // => 42
 
-    lens(json).at("foo").at("quux").get()
+    focus(json).at("foo").at("quux").get()
     // => "norf"
 
-    lens(json).at("foo").at("bar").at("baz").modify((x: number) => x * 2)
+    focus(json).at("foo").at("bar").at("baz").modify((x: number) => x * 2)
     // => { foo: { bar: { baz: 84 }, quux: "norf" } }
 
-    lens(json).at("foo").at("quux").set("thud")
+    focus(json).at("foo").at("quux").set("thud")
     // => { foo: { bar: { baz: 42 }, quux: "thud" } }
 
 For more usage samples and methods refer to the specification files.
 
 Note that everything is type safe. That is, you can not do something like this:
 
-    lens(json).at("bar").get()
+    focus(json).at("bar").get()
     // compilation error (missing property "bar")
 
-    lens(json).at("foo").at("baz").get()
+    focus(json).at("foo").at("baz").get()
     // compilation error (missing property "baz")
 
-    lens(json).at("foo").at("bar").at("baz").set("plugh")
+    focus(json).at("foo").at("bar").at("baz").set("plugh")
     // compilation error (incompatible types `number` and `string`)
 
 
