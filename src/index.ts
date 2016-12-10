@@ -1,2 +1,2 @@
 export * from "./lens";
-export * from "./pseudolens";
+export * from "./focus";

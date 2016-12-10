@@ -1,7 +1,7 @@
 import { expect } from "chai";
 
 import { view } from "./lens";
-import { focus } from "./pseudolens";
+import { focus } from "./focus";
 
 
 describe("Focus", () => {
