@@ -31,39 +31,46 @@ Usage
 
 Let us assume you have a JSON like this:
 
-    let json = { foo: { bar: { baz: 42 }, quux: "norf" } }
+``` typescript
+let json = { foo: { bar: { baz: 42 }, quux: "norf" } }
+```
 
 Just import the `focus` function from this library:
 
-    import { focus } from "pokato";
+``` typescript
+import { focus } from "pokato";
+```
 
 and then use it like this:
 
-    focus(json).at("foo").at("bar").at("baz").get()
-    // => 42
+``` typescript
+focus(json).at("foo").at("bar").at("baz").get()
+// => 42
 
-    focus(json).at("foo").at("quux").get()
-    // => "norf"
+focus(json).at("foo").at("quux").get()
+// => "norf"
 
-    focus(json).at("foo").at("bar").at("baz").modify((x: number) => x * 2)
-    // => { foo: { bar: { baz: 84 }, quux: "norf" } }
+focus(json).at("foo").at("bar").at("baz").modify((x: number) => x * 2)
+// => { foo: { bar: { baz: 84 }, quux: "norf" } }
 
-    focus(json).at("foo").at("quux").set("thud")
-    // => { foo: { bar: { baz: 42 }, quux: "thud" } }
+focus(json).at("foo").at("quux").set("thud")
+// => { foo: { bar: { baz: 42 }, quux: "thud" } }
+```
 
 For more usage samples and methods refer to the specification files.
 
 Note that everything is type safe. That is, you can not do something like this:
 
-    focus(json).at("bar").get()
-    // compilation error (missing property "bar")
+``` typescript
+focus(json).at("bar").get()
+// compilation error (missing property "bar")
 
-    focus(json).at("foo").at("baz").get()
-    // compilation error (missing property "baz")
+focus(json).at("foo").at("baz").get()
+// compilation error (missing property "baz")
 
-    focus(json).at("foo").at("bar").at("baz").set("plugh")
-    // compilation error (incompatible types `number` and `string`)
-
+focus(json).at("foo").at("bar").at("baz").set("plugh")
+// compilation error (incompatible types `number` and `string`)
+```
 
 
 Building
