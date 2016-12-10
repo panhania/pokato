@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { pure, view, compose } from "./lens";
+import { compose, pure, view } from "./lens";
 
 describe("pure", () => {
 

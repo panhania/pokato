@@ -1,4 +1,4 @@
-import { Lens, pure, view, compose } from "./lens";
+import { compose, Lens, pure, view } from "./lens";
 
 export class Focus<A, B> {
 
