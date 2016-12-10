@@ -104,6 +104,6 @@ describe("Focus", () => {
 
     it("should allow fucusing using ordinary lenses", () => {
         let viewPlugh = view<{ plugh: number, thud: number }, "plugh">("plugh");
-        expect(focus(foo).at("quux").focus(viewPlugh).get()).equal(15);
+        expect(focus(foo).at("quux").with(viewPlugh).get()).equal(15);
     });
 });

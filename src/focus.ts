@@ -18,12 +18,12 @@ export class Focus<A, B> {
         return this.lens.set(this.item, f(this.lens.get(this.item)));
     }
 
-    focus<C>(lens: Lens<B, C>): Focus<A, C> {
+    with<C>(lens: Lens<B, C>): Focus<A, C> {
         return new Focus(this.item, compose(lens, this.lens));
     }
 
     at<K extends keyof B>(prop: K): Focus<A, B[K]> {
-        return this.focus<B[K]>(view<B, K>(prop));
+        return this.with<B[K]>(view<B, K>(prop));
     }
 }
 
