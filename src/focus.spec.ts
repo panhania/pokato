@@ -108,9 +108,9 @@ describe("Focus", () => {
 
     it("should allow updates on multiple nested paths", () => {
         let foofoo = focus({ foo1: foo, foo2: foo })
-            .then($ => $.at("foo1").at("bar").modify(x => x + 97))
-            .then($ => $.at("foo2")
-                .then($ => $.at("quux").set({ plugh: 1, thud: 2 }))
+            .then(($) => $.at("foo1").at("bar").modify((x) => x + 97))
+            .then(($) => $.at("foo2")
+                .then(($) => $.at("quux").set({ plugh: 1, thud: 2 }))
                 .unfocus()
             )
             .unfocus();
@@ -132,7 +132,7 @@ describe("Focus", () => {
                     thud: 2,
                 },
                 norf: [23, 42],
-            }
+            },
         });
     });
 });
