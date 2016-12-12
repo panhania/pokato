@@ -1,0 +1,4 @@
+node_modules/
+src/
+build/**/*.spec.js
+build/**/*.spec.d.ts
