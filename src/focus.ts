@@ -5,6 +5,10 @@ export class Focus<A, B> {
     constructor(private item: A, private lens: Lens<A, B>) {
     }
 
+    public unfocus(): A {
+        return this.item;
+    }
+
     public get(): B {
         return this.lens.get(this.item);
     }
