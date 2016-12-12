@@ -1,6 +1,7 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "no-shadowed-variable": false,
     "object-literal-sort-keys": false,
     "variable-name": [true, "check-format", "allow-leading-underscore"],
     "linebreak-style": [true, "LF"],
