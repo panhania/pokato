@@ -17,6 +17,10 @@ export class Focus<A, B> {
         return this.lens.set(this.item, f(this.lens.get(this.item)));
     }
 
+    public then(f: ($: Focus<A, B>) => A): Focus<A, B> {
+        return new Focus(f(this), this.lens);
+    }
+
     public with<C>(lens: Lens<B, C>): Focus<A, C> {
         return new Focus(this.item, compose(lens, this.lens));
     }
