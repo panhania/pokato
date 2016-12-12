@@ -105,4 +105,34 @@ describe("Focus", () => {
         let viewPlugh = view<{ plugh: number, thud: number }, "plugh">("plugh");
         expect(focus(foo).at("quux").with(viewPlugh).get()).equal(15);
     });
+
+    it("should allow updates on multiple nested paths", () => {
+        let foofoo = focus({ foo1: foo, foo2: foo })
+            .then($ => $.at("foo1").at("bar").modify(x => x + 97))
+            .then($ => $.at("foo2")
+                .then($ => $.at("quux").set({ plugh: 1, thud: 2 }))
+                .unfocus()
+            )
+            .unfocus();
+        expect(foofoo).to.deep.equal({
+            foo1: {
+                bar: 101,
+                baz: 8,
+                quux: {
+                    plugh: 15,
+                    thud: 16,
+                },
+                norf: [23, 42],
+            },
+            foo2: {
+                bar: 4,
+                baz: 8,
+                quux: {
+                    plugh: 1,
+                    thud: 2,
+                },
+                norf: [23, 42],
+            }
+        });
+    });
 });
