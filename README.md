@@ -72,6 +72,16 @@ focus(json).at("foo").at("bar").at("baz").set("plugh")
 // compilation error (incompatible types `number` and `string`)
 ```
 
+You can also update multiple fields of a given object with the `then` operator:
+
+``` typescript
+focus({ foo: 1, bar: { baz: 2, quux: 3 } })
+    .then($ => $.at("foo").modify(x => x + 10))
+    .then($ => $.at("bar").at("baz").set(5))
+    .unfocus()
+// => { foo: 11, bar: { baz: 5, quux: 3 } }
+```
+
 
 Building
 --------
