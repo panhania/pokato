@@ -1,6 +1,6 @@
 {
   "name": "pokato",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A poor man's lens library for TypeScript",
   "author": "Łukasz Hanuszczak <lukasz.hanuszczak@gmail.com>",
   "license": "MIT",
