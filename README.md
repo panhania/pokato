@@ -1,6 +1,8 @@
 Pokato
 ======
 
+[![npm version][npm-badge]][npm-url]
+
 A poor man's lens library for TypeScript.
 
 
@@ -93,3 +95,6 @@ script.
     yarn build
     yarn test
     yarn lint
+
+[npm-url]: https://www.npmjs.com/package/pokato
+[npm-badge]: https://badge.fury.io/js/pokato.svg
